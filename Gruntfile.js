@@ -124,20 +124,6 @@ module.exports = function(grunt) {
                     coverageFolder: reportsFolder + '/coverage'
                 }
             }
-            /* coveralls: {
-             src: 'test', // the folder, not the files
-             options: {
-             coverage: true,
-             check: {
-             lines: 75,
-             statements: 75
-             },
-             dryRun: true,
-             coverageFolder: reportsFolder + '/coverage',
-             root: './src', // define where the cover task should consider the root of libraries that are covered by tests
-             reportFormats: ['cobertura','lcovonly']
-             }
-             }*/
         },
         coveralls: {
             options: {
@@ -152,9 +138,6 @@ module.exports = function(grunt) {
         }
     });
 
-    /*grunt.loadNpmTasks('grunt-contrib-jshint');
-     grunt.loadNpmTasks('grunt-contrib-concat');
-     grunt.loadNpmTasks('grunt-contrib-uglify');*/
     grunt.loadNpmTasks('grunt-coveralls');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -163,5 +146,4 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['simplemocha', 'jshint', 'mocha_istanbul', 'coveralls']);
     grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul', 'coveralls']);
-// grunt.registerTask('default', ['jshint', 'simplemocha', 'concat', 'uglify']);
 };
