@@ -7,9 +7,9 @@ before_install:
  - "npm install coveralls -g"
 install: npm install
 before_script: grunt
-script: "make ci-travis"
+script: "npm run-script ci"
 after_success:
-  - "make submit-cov-to-coveralls"
+  - "coveralls"
 #script: "npm run-script ci"
 #after_script:
 # - "grunt coveralls"
