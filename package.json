@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "nodejs-restful",
   "main": "server.js",
-  "scripts": {
-    //"test": "mocha -w"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/guillermocorrea/nodejs-restful.git"
