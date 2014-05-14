@@ -4,8 +4,7 @@
     "description": "nodejs-restful",
     "main": "server.js",
     "scripts": {
-        "test": "grunt test",
-        "ci": "istanbul cover -- grunt test"
+        "test": "grunt test"
     },
     "repository": {
         "type": "git",
