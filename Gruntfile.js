@@ -161,7 +161,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-jslint');
 
-    grunt.registerTask('default', ['simplemocha', 'jshint', 'mocha_istanbul']);
-    grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul']);
+    grunt.registerTask('default', ['simplemocha', 'jshint', 'mocha_istanbul', 'coveralls']);
+    grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul', 'coveralls']);
 // grunt.registerTask('default', ['jshint', 'simplemocha', 'concat', 'uglify']);
 };
