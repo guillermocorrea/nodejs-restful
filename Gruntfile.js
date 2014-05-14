@@ -124,26 +124,38 @@ module.exports = function(grunt) {
                     coverageFolder: reportsFolder + '/coverage'
                 }
             }
-           /* coveralls: {
-                src: 'test', // the folder, not the files
-                options: {
-                    coverage: true,
-                    check: {
-                        lines: 75,
-                        statements: 75
-                    },
-                    dryRun: true,
-                    coverageFolder: reportsFolder + '/coverage',
-                    root: './src', // define where the cover task should consider the root of libraries that are covered by tests
-                    reportFormats: ['cobertura','lcovonly']
-                }
-            }*/
+            /* coveralls: {
+             src: 'test', // the folder, not the files
+             options: {
+             coverage: true,
+             check: {
+             lines: 75,
+             statements: 75
+             },
+             dryRun: true,
+             coverageFolder: reportsFolder + '/coverage',
+             root: './src', // define where the cover task should consider the root of libraries that are covered by tests
+             reportFormats: ['cobertura','lcovonly']
+             }
+             }*/
+        },
+        coveralls: {
+            options: {
+                // LCOV coverage file relevant to every target
+                src: reportsFolder + '/coverage/lcov.info',
+
+                // When true, grunt-coveralls will only print a warning rather than
+                // an error, to prevent CI builds from failing unnecessarily (e.g. if
+                // coveralls.io is down). Optional, defaults to false.
+                force: false
+            }
         }
     });
 
     /*grunt.loadNpmTasks('grunt-contrib-jshint');
      grunt.loadNpmTasks('grunt-contrib-concat');
      grunt.loadNpmTasks('grunt-contrib-uglify');*/
+    grunt.loadNpmTasks('grunt-coveralls');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-simple-mocha');

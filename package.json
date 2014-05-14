@@ -4,7 +4,8 @@
     "description": "nodejs-restful",
     "main": "server.js",
     "scripts": {
-        "test": "grunt test"
+        "test": "grunt test",
+        "ci": "istanbul cover -- grunt test"
     },
     "repository": {
         "type": "git",
@@ -19,7 +20,10 @@
         "grunt-simple-mocha": "~0.4.0",
         "grunt-contrib-jshint": "~0.10.0",
         "grunt-jslint": "~1.1.11",
-        "grunt-mocha-istanbul": "~1.4.1"
+        "grunt-mocha-istanbul": "~1.4.1",
+        "coveralls": "~2.10.0",
+        "mocha-lcov-reporter": "0.0.1",
+        "grunt-coveralls": "~0.3.0"
     },
     "dependencies": {
         "express": "~4.2.0",
