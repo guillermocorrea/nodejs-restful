@@ -11,6 +11,7 @@ script: "npm run-script ci"
 after_success:
   - "npm run-script ci"
   - "grunt coveralls"
+  - "coveralls"
 #script: "npm run-script ci"
 #after_script:
 # - "grunt coveralls"
