@@ -37,8 +37,8 @@ module.exports = function(grunt) {
             },
             test: {
                 src: [ // some example files
-                    'tests/*.js',
-                    'tests/**/*.js'
+                    'test/*.js',
+                    'test/**/*.js'
                 ],
                 exclude: [
 
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 
         },
         jshint: {
-            files: ['Gruntfile.js', 'src/**/*.js', 'tests/**/*.js'],
+            files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -113,11 +113,11 @@ module.exports = function(grunt) {
                 ui: 'bdd',
                 reporter: 'tap'
             },
-            all: { src: ['tests/*.js'] }
+            all: { src: ['test/*.js'] }
         },
         mocha_istanbul: {
             coverage: {
-                src: 'tests', // the folder, not the files,
+                src: 'test', // the folder, not the files,
                 options: {
                     mask: '*.spec.js',
                     dryRun: true,
