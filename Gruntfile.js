@@ -119,10 +119,12 @@ module.exports = function(grunt) {
             coverage: {
                 src: 'tests', // the folder, not the files,
                 options: {
-                    mask: '*.spec.js'
+                    mask: '*.spec.js',
+                    dryRun: true,
+                    coverageFolder: reportsFolder + '/coverage'
                 }
-            },
-            coveralls: {
+            }
+           /* coveralls: {
                 src: 'test', // the folder, not the files
                 options: {
                     coverage: true,
@@ -130,11 +132,12 @@ module.exports = function(grunt) {
                         lines: 75,
                         statements: 75
                     },
+                    dryRun: true,
                     coverageFolder: reportsFolder + '/coverage',
                     root: './src', // define where the cover task should consider the root of libraries that are covered by tests
                     reportFormats: ['cobertura','lcovonly']
                 }
-            }
+            }*/
         }
     });
 
