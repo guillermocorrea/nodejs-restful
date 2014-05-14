@@ -21,7 +21,6 @@ router.get('/', function (req, res) {
 });
 
 app.use('/api/v' + config.api.latestVersion, router);
-// aa     aaa
 
 app.listen(port);
 console.log('Magic happens on port: ' + port);
