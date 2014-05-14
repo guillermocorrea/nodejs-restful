@@ -8,8 +8,8 @@ before_install:
 install: npm install
 before_script: grunt
 script: "npm run-script ci"
-after_success:
-  - "coveralls"
+#after_success:
+#  - "coveralls"
 #script: "npm run-script ci"
 #after_script:
 # - "grunt coveralls"
