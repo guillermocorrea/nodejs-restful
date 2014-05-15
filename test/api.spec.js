@@ -7,6 +7,11 @@ var app = require('../src/backend/server');
 var config = require('../src/backend/config');
 
 describe('API', function () {
+    it('GET / should be ok', function (done) {
+        request(app)
+            .get('/')
+            .expect(200, done);
+    });
     it('GET /api/v' + config.api.latestVersion + '/ should be ok', function (done) {
         request(app)
             .get('/api/v' + config.api.latestVersion + '/')
