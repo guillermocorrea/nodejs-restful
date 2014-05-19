@@ -17,7 +17,6 @@ var app = express();
 app.set('dbUrl', config.db[app.settings.env]);
 app.set('apiPath', '/api/v' + config.api.latestVersion);
 console.log('connected to: ' + app.get('dbUrl'));
-// connect mongoose to the mongo dbUrl
 // Mongoose.connect(app.get('dbUrl'));
 
 app.use(bodyParser());
