@@ -114,16 +114,6 @@ module.exports = function(grunt) {
             },
             all: { src: ['test/*.js'] }
         },
-        mocha_istanbul: {
-            coverage: {
-                src: 'test', // the folder, not the files,
-                options: {
-                    mask: '*.spec.js',
-                    dryRun: true,
-                    coverageFolder: reportsFolder + '/coverage'
-                }
-            }
-        },
         coveralls: {
             options: {
                 // LCOV coverage file relevant to every target
@@ -134,6 +124,29 @@ module.exports = function(grunt) {
                 // coveralls.io is down). Optional, defaults to false.
                 force: false
             }
+        },
+        mocha_istanbul: {
+            coverage: {
+                src: 'test', // the folder, not the files,
+                options: {
+                    mask: '*.spec.js',
+                    dryRun: true,
+                    coverageFolder: reportsFolder + '/coverage'
+                }
+            },
+            cobertura: {
+                src: 'test', // the folder, not the files
+                options: {
+                    coverage: true,
+                    check: {
+                        lines: 75,
+                        statements: 75
+                    },
+                    coverageFolder: reportsFolder + '/coverage',
+                    root: './src', // define where the cover task should consider the root of libraries that are covered by tests
+                    reportFormats: ['cobertura','lcovonly', 'html']
+                }
+            }
         }
     });
 
@@ -143,6 +156,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-jslint');
 
-    grunt.registerTask('default', ['simplemocha', 'jshint', 'mocha_istanbul', 'coveralls']);
-    grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul', 'coveralls']);
+    grunt.registerTask('default', ['simplemocha', 'jshint', 'mocha_istanbul:coverage', 'coveralls']);
+    grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul:coverage', 'coveralls']);
+    grunt.registerTask('cobertura', ['mocha_istanbul:cobertura']);
 };

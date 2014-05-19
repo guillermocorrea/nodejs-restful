@@ -33,9 +33,4 @@ describe('API /users', function () {
             .get(app.get('apiPath') + '/users')
             .expect(401, done);
     });
-    it('GET ' + app.get('apiPath') + '/users requires authentication', function (done) {
-        request(app)
-            .get(app.get('apiPath') + '/users')
-            .expect(401, done);
-    });
 });
