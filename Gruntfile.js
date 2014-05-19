@@ -73,8 +73,7 @@ module.exports = function(grunt) {
                 options: {
                     junit: reportsFolder + '/client-junit.xml'
                 }
-            },
-
+            }
         },
         jshint: {
             files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],

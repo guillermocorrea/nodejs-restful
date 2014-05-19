@@ -12,6 +12,7 @@ module.exports = {
         test: "mongodb://localhost/nodejs-restful-test"
     },
     api: {
-        latestVersion: 1
+        latestVersion: 1,
+        tokenLife: 3600
     }
 };

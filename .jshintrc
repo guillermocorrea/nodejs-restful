@@ -13,8 +13,8 @@
     "undef": true,
     "unused": true,*/
     "node": true,
-    "indent": 9
-   /* "predef": [  // Custom globals.
+    "indent": 9,
+    "predef": [  // Custom globals.
         // this is because we use require() from RequireJS library
         "require",
         "define",
@@ -24,6 +24,8 @@
         "beforeEach",
         "afterEach",
         "it",
-        "expect"
-    ]*/
+        "expect",
+        "Schema",
+        "mongoose"
+    ]
 }
