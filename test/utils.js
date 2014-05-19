@@ -8,7 +8,7 @@
  */
 
 var config = require('../src/backend/config');
-var Mongoose = require('Mongoose');
+var Mongoose = require('mongoose');
 
 // ensure the NODE_ENV is set to 'test'
 // this is helpful when you would like to change behavior when testing
