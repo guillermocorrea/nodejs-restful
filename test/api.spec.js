@@ -7,12 +7,12 @@ var app = require('../src/backend/server');
 var config = require('../src/backend/config');
 
 /*describe('API oauth', function () {
-    it('POST /ouath/token should generate token', function (done) {
-        request(app)
-            .post('/oauth/token')
-            .expect(200, done);
-    });
-});*/
+ it('POST /ouath/token should generate token', function (done) {
+ request(app)
+ .post('/oauth/token')
+ .expect(200, done);
+ });
+ });*/
 
 describe('API', function () {
     it('GET / should be ok', function (done) {
@@ -31,11 +31,7 @@ describe('API /users', function () {
     it('GET ' + app.get('apiPath') + '/users requires authentication', function (done) {
         request(app)
             .get(app.get('apiPath') + '/users')
-            .expect(401, done);
-    });
-    it('GET ' + app.get('apiPath') + '/users requires authentication', function (done) {
-        request(app)
-            .get(app.get('apiPath') + '/users')
+            .set('authorization', 'Bearer TOKEN')
             .expect(401, done);
     });
 });
