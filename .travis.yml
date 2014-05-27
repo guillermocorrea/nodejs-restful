@@ -5,6 +5,8 @@ before_install:
  - "npm install -g grunt-cli"
  - "npm install istanbul -g"
  - "npm install coveralls -g"
+services:
+   - mongodb
 install: npm install
 before_script: grunt
 script: "npm run-script ci"

@@ -21,9 +21,14 @@ require('./libs/auth');
 var app = express();
 app.set('dbUrl', config.db[app.settings.env]);
 app.set('apiPath', '/api/v' + config.api.latestVersion);
+<<<<<<< HEAD
 log.info('connected to: ' + app.get('dbUrl'));
 // connect mongoose to the mongo dbUrl
 Mongoose.connect(app.get('dbUrl'));
+=======
+console.log('connected to: ' + app.get('dbUrl'));
+// Mongoose.connect(app.get('dbUrl'));
+>>>>>>> 39da5405a249a0d680b832c635d8634223dc2f1f
 
 var p = Path.join(__dirname, '../frontend');
 console.log('__dirname: ' + p);

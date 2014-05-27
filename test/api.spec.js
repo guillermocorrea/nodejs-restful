@@ -84,10 +84,13 @@ describe('API /users', function () {
             .get(app.get('apiPath') + '/users')
             .expect(401, done);
     });
+<<<<<<< HEAD
     it('GET ' + app.get('apiPath') + '/users returns users', function (done) {
         request(app)
             .get(app.get('apiPath') + '/users')
             .set('authorization', 'Bearer ' + token)
             .expect(401, done);
     });
+=======
+>>>>>>> 39da5405a249a0d680b832c635d8634223dc2f1f
 });
