@@ -51,9 +51,11 @@ beforeEach(function (done) {
 });
 
 afterEach(function (done) {
-    Mongoose.connection.db.dropDatabase(function(err, results) {
-        console.log('dropped database');
-    });
-    Mongoose.disconnect();
+    if (Mongoose.connection.db) {
+        Mongoose.connection.db.dropDatabase(function(err, results) {
+            console.log('dropped database');
+        });
+        Mongoose.disconnect();
+    }
     return done();
 });

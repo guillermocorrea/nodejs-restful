@@ -29,3 +29,6 @@ node_modules
 
 # Reports directory
 reports
+
+# Front end vendors
+src/frontend/vendors/
