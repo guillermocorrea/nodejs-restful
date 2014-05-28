@@ -14,5 +14,11 @@
     "src/frontend/vendors",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "angular": "~1.2.16",
+    "font-awesome": "~4.1.0",
+    "angular-loading-bar": "~0.4.2"
+  }
 }

@@ -42,7 +42,10 @@
     "crypto": "0.0.3",
     "winston": "~0.7.3",
     "express-session": "~1.2.0",
-    "cookie-parser": "~1.1.0"
+    "cookie-parser": "~1.1.0",
+    "method-override": "~1.0.2",
+    "static-favicon": "~2.0.0-alpha",
+    "serve-favicon": "~2.0.0"
   },
   "keywords": [
     "rest",
