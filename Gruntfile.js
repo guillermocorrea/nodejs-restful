@@ -108,7 +108,7 @@ module.exports = function(grunt) {
             options: {
                 globals: ['expect'],
                 timeout: 3000,
-                ignoreLeaks: false,
+                ignoreLeaks: true,
                 ui: 'bdd',
                 reporter: 'tap'
             },
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-jslint');
 
-    grunt.registerTask('default', ['simplemocha', 'jshint', 'mocha_istanbul:coverage', 'coveralls']);
+    grunt.registerTask('default', ['simplemocha', 'mocha_istanbul:coverage', 'coveralls']);
     grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul:coverage', 'coveralls']);
     grunt.registerTask('cobertura', ['mocha_istanbul:cobertura']);
 };

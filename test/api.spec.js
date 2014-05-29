@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 var token = undefined;
 
 before(function (done) {
-    function seedDb(callback) {
+    //function seedDb(callback) {
         UserModel.remove({}, function(err) {
             var user = new UserModel({ username: "andrey", password: "simplepassword" });
             user.save(function(err, user) {
@@ -46,10 +46,11 @@ before(function (done) {
             if (err) return log.error(err);
         });
 
-        callback();
-    }
+    done();
+        //callback();
+    //}
 
-    function getToken() {
+    /*function getToken() {
         request(app)
             .post('/oauth/token/')
             .send({"grant_type": "password", "client_id": "mobileV1", "client_secret": "abc123456", "username": "andrey", "password": "simplepassword"})
@@ -63,10 +64,26 @@ before(function (done) {
                 token = res.body.access_token;
                 done();
             });
-    }
+    }*/
 
-    seedDb(getToken);
+    //seedDb(getToken);
 });
+
+function getToken(callback) {
+    request(app)
+        .post('/oauth/token/')
+        .send({"grant_type": "password", "client_id": "mobileV1", "client_secret": "abc123456", "username": "andrey", "password": "simplepassword"})
+        .set('Host', 'localhost:8080')
+        .set('Accept-Encoding', 'gzip, deflate, compress')
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .set('User-Agent', 'HTTPie/0.8.0')
+        .end(function(err, res) {
+            if (err) throw err;
+            token = res.body.access_token;
+            callback();
+        });
+}
 
 describe('API', function () {
     it('GET / should be ok', function (done) {
@@ -89,23 +106,17 @@ describe('API /users', function () {
     });
 
     it('GET ' + app.get('apiPath') + '/users returns users', function (done) {
-        if (token === undefined) {
+        getToken(function() {
+            console.log(token);
             request(app)
-                .post('/oauth/token/')
-                .send({"grant_type": "password", "client_id": "mobileV1", "client_secret": "abc123456", "username": "andrey", "password": "simplepassword"})
+                .get(app.get('apiPath') + '/users')
                 .set('Host', 'localhost:8080')
                 .set('Accept-Encoding', 'gzip, deflate, compress')
                 .set('Accept', 'application/json')
                 .set('Content-Type', 'application/json')
                 .set('User-Agent', 'HTTPie/0.8.0')
-                .end(function(err, res) {
-                    if (err) throw err;
-                    token = res.body.access_token;
-                });
-        }
-        request(app)
-            .get(app.get('apiPath') + '/users')
-            .set('authorization', 'Bearer ' + token)
-            .expect(200, done);
+                .set('Authorization', 'Bearer ' + token)
+                .expect(200, done);
+        });
     });
 });

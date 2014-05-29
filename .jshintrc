@@ -14,6 +14,7 @@
     "unused": true,*/
     "node": true,
     "indent": 9,
+    "force": true,
     "predef": [  // Custom globals.
         // this is because we use require() from RequireJS library
         "require",
