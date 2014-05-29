@@ -157,6 +157,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jslint');
 
     grunt.registerTask('default', ['simplemocha', 'mocha_istanbul:coverage', 'coveralls']);
-    grunt.registerTask('test', ['simplemocha', 'jshint', 'mocha_istanbul:coverage', 'coveralls']);
+    grunt.registerTask('test', ['simplemocha', 'mocha_istanbul:coverage', 'coveralls']);
     grunt.registerTask('cobertura', ['mocha_istanbul:cobertura']);
 };
