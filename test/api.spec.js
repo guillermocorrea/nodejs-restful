@@ -81,6 +81,7 @@ function getToken(callback) {
         .end(function(err, res) {
             if (err) throw err;
             token = res.body.access_token;
+            if (token === undefined) getToken(callback);
             callback();
         });
 }
