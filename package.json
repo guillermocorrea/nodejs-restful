@@ -56,5 +56,9 @@
   "bugs": {
     "url": "https://github.com/guillermocorrea/nodejs-restful/issues"
   },
-  "homepage": "https://github.com/guillermocorrea/nodejs-restful"
+  "homepage": "https://github.com/guillermocorrea/nodejs-restful",
+  "engines": {
+    "node": "0.10.22",
+    "npm": "1.10.14"
+  }
 }
