@@ -32,3 +32,6 @@ reports
 
 # Front end vendors
 src/frontend/vendors/
+
+# mongodump
+dump

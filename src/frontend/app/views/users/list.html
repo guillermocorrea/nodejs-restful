@@ -1,0 +1,75 @@
+<div class="page-header">
+    <h1>Users <span class="badge">{{ users.length }}</span></h1>
+</div>
+<div class="pull-right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#saveForm" data-ng-click="newUser()">+ New</button>
+</div>
+<div class="clearfix"></div>
+<div class="modal fade" id="saveForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">{{modalTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <form name="userForm" class="form-horizontal" role="form" novalidate>
+                    <div class="form-group" show-errors>
+                        <label for="inputEmail3" class="col-sm-2 control-label">First name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="firstName" class="form-control" id="inputEmail3" placeholder="First name" data-ng-model="currentUser.firstName" required>
+                            <p class="help-block" ng-if="userForm.firstName.$error.required">First name required</p>
+                        </div>
+                    </div>
+                    <div class="form-group" show-errors>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Last name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lastName" class="form-control" id="inputPassword3" placeholder="Last name" data-ng-model="currentUser.lastName" required>
+                            <p class="help-block" ng-if="userForm.lastName.$error.required">Last name required</p>
+                        </div>
+                    </div>
+                    <div class="form-group" show-errors>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="username" class="form-control" id="inputPassword3" data-ng-model="currentUser.username" placeholder="Username" required ng-minlength="3">
+                            <p class="help-block" ng-if="userForm.username.$error.required">Username name required</p>
+                            <p class="help-block" ng-if="userForm.username.$error.minlength">Username min length 3</p>
+                        </div>
+                    </div>
+                    <div class="form-group" show-errors>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" class="form-control" id="inputPassword3" data-ng-model="currentUser.password" placeholder="Password" required required ng-minlength="3"> 
+                            <p class="help-block" ng-if="userForm.password.$error.required">Password name required</p>
+                            <p class="help-block" ng-if="userForm.password.$error.minlength">Password min length 3</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" ng-disabled="userForm.$invalid" data-ng-click="save(currentUser)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped" data-ng-show="users.length > 0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="user in users">
+            <td>{{$index + 1}}</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>{{user.username}}</td>
+            <td><a href="#users/edit" class="btn btn-default"><li class="fa fa-edit"></li> Edit</a> <a href="#users/edit" class="btn btn-danger"><li class="fa fa-trash-o"></li> Delete</a></td>
+        </tr>
+    </tbody>
+</table>
