@@ -21,7 +21,10 @@ var Path = require('path');
 require('./libs/auth');
 
 var app = express();
-app.set('dbUrl', config.db[app.settings.env]);
+
+console.log('mongolab uri: ' + process.env.MONGOLAB_URI);
+
+app.set('dbUrl', process.env.MONGOLAB_URI || config.db[app.settings.env]);
 app.set('apiPath', '/api/v' + config.api.latestVersion);
 
 log.info('connected to: ' + app.get('dbUrl'));
