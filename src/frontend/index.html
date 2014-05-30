@@ -1,72 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="restfulApp">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="shortcut icon" href="/favicon.ico">
-        <title>node.js-restful</title>
-        <!-- Bootstrap core CSS -->
-        <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="app/css/style.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body data-ng-controller="mainController">
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">node.js-restful</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#users"><i class="fa fa-users"></i> Users</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">Default</a></li>
-                        <li><a href="../navbar-static-top/">Static top</a></li>
-                        <li class="active"><a href="./">Fixed top</a></li>
-                    </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
-            <div class="container">
-                <!-- MAIN CONTENT AND INJECTED VIEWS -->
-                <div id="main">
-                    <div class="reveal-animation" data-ng-view></div>
-                </div>
-                <hr />
-                <footer>
-                    <a href="https://github.com/guillermocorrea/nodejs-restful" class="btn btn-default"><i class="fa fa-github"></i> source code</a>
-                    <a href='https://coveralls.io/r/guillermocorrea/nodejs-restful?branch=master'><img src='https://coveralls.io/repos/guillermocorrea/nodejs-restful/badge.png?branch=master' alt='Coverage Status' /></a>
-                    <a href='https://travis-ci.org/guillermocorrea/nodejs-restful'><img src='https://travis-ci.org/guillermocorrea/nodejs-restful.svg?branch=master' alt='Coverage Status' /></a>
-                    <a href="https://codeclimate.com/github/guillermocorrea/nodejs-restful"><img src="https://codeclimate.com/github/guillermocorrea/nodejs-restful.png" /></a>
-                    <a href='https://www.codeship.io/projects/2f8f6ec0-bdb0-0131-5ad7-425498ddc89f/status?branch=master'><img src='https://www.codeship.io/projects/2f8f6ec0-bdb0-0131-5ad7-425498ddc89f/status?branch=master' alt='Deployment status' /></a>
-                </footer>
-                </div> <!-- /container -->
-                <!-- Bootstrap core JavaScript
-                ================================================== -->
-                <!-- Placed at the end of the document so the pages load faster -->
-                <script src="vendors/jquery/dist/jquery.min.js"></script>
-                <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-                <script src="vendors/angular/angular.min.js"></script>
-                <script src="vendors/angular-route/angular-route.min.js"></script>
-                <script src="vendors/angular-animate/angular-animate.min.js"></script>
-                <script src="app/js/app.js"></script>
-            </body>
-        </html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>node.js-restful</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendors/toastr/toastr.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="app/css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body data-ng-controller="mainController">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">node.js-restful</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#users"><i class="fa fa-users"></i> Users</a></li>-->
+                <li ng-repeat="item in navList" ng-class="{active: item.active}">
+                    <a href="#{{item.path}}"><i class="{{item.icon}}"></i> {{item.title}}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../navbar/">Default</a></li>
+                <li><a href="../navbar-static-top/">Static top</a></li>
+                <li class="active"><a href="./">Fixed top</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+<div class="container">
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main">
+        <div class="reveal-animation" data-ng-view></div>
+    </div>
+    <hr />
+    <footer>
+        <a href="https://github.com/guillermocorrea/nodejs-restful" class="btn btn-default"><i class="fa fa-github"></i> source code</a>
+        <a href='https://coveralls.io/r/guillermocorrea/nodejs-restful?branch=master'><img src='https://coveralls.io/repos/guillermocorrea/nodejs-restful/badge.png?branch=master' alt='Coverage Status' /></a>
+        <a href='https://travis-ci.org/guillermocorrea/nodejs-restful'><img src='https://travis-ci.org/guillermocorrea/nodejs-restful.svg?branch=master' alt='Coverage Status' /></a>
+        <a href="https://codeclimate.com/github/guillermocorrea/nodejs-restful"><img src="https://codeclimate.com/github/guillermocorrea/nodejs-restful.png" /></a>
+        <a href='https://www.codeship.io/projects/2f8f6ec0-bdb0-0131-5ad7-425498ddc89f/status?branch=master'><img src='https://www.codeship.io/projects/2f8f6ec0-bdb0-0131-5ad7-425498ddc89f/status?branch=master' alt='Deployment status' /></a>
+    </footer>
+</div> <!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendors/angular/angular.min.js"></script>
+<script src="vendors/angular-route/angular-route.min.js"></script>
+<script src="vendors/angular-animate/angular-animate.min.js"></script>
+<script src="vendors/underscore/underscore.js"></script>
+<script src="vendors/toastr/toastr.min.js"></script>
+<script src="app/js/app.js"></script>
+</body>
+</html>
