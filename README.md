@@ -5,6 +5,11 @@ nodejs-restful
 
 A seed app node.js restful server with continuous integration and code quality metrics throug https://travis-ci.org/, https://coveralls.io/ and https://codeclimate.com.
 
+Architecture
+==============
+
+![Architecture](https://raw.githubusercontent.com/guillermocorrea/nodejs-restful/master/doc/img/nodesj-restful.gif)
+
 Example token request:
 ```
 POST http://localhost:8080/oauth/token HTTP/1.1
