@@ -35,22 +35,21 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <!--<li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                <li><a href="#users"><i class="fa fa-users"></i> Users</a></li>-->
                 <li ng-repeat="item in navList" ng-class="{active: item.active}">
                     <a href="#{{item.path}}"><i class="{{item.icon}}"></i> {{item.title}}</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Default</a></li>
-                <li><a href="../navbar-static-top/">Static top</a></li>
-                <li class="active"><a href="./">Fixed top</a></li>
+                <li ng-if="isAuthenticated()"><a href="#/users/profile">Hello {{getUserSession().username}}</a></li>
+                <li ng-if="isAuthenticated()"><a href="/" ng-click="logout()">Log out</a></li>
+                <li ng-if="!isAuthenticated()"><a href="#/login">Login or Register</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>
 <div class="container">
     <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    {{getUserSession()}}
     <div id="main">
         <div class="reveal-animation" data-ng-view></div>
     </div>
@@ -71,6 +70,7 @@
 <script src="vendors/angular/angular.min.js"></script>
 <script src="vendors/angular-route/angular-route.min.js"></script>
 <script src="vendors/angular-animate/angular-animate.min.js"></script>
+<script src="vendors/angular-resource/angular-resource.min.js"></script>
 <script src="vendors/underscore/underscore.js"></script>
 <script src="vendors/toastr/toastr.min.js"></script>
 <script src="app/js/app.js"></script>
