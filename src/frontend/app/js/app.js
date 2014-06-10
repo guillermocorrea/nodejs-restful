@@ -583,6 +583,14 @@
                     }
                 )
             };
+
+            $scope.register = function(registerUser) {
+                // TODO: valide user
+                // TODO: users.Service.add(...)
+            };
+            $scope.isMatchPassword = function () {
+                return $scope.registerUser.password === $scope.registerUser.confirmPassword;
+            };
         }
     ]);
 // Directives

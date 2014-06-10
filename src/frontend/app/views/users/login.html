@@ -7,16 +7,18 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>Sign in </strong></h3></div>
             <div class="panel-body">
-                <form role="form">
-                    <div class="form-group">
+                <form name="loginForm" role="form" novalidate>
+                    <div class="form-group" show-errors>
                         <label for="username-login">Username or Email</label>
-                        <input type="text" name="username" ng-model="user.username" id="username-login" class="form-control" style="border-radius:0px"  placeholder="Enter email">
+                        <input type="text" name="username" ng-model="user.username" id="username-login" class="form-control" style="border-radius:0px" placeholder="Enter email" required>
+                        <p class="help-block" ng-if="loginForm.username.$error.required">Username or Email required</p>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" show-errors>
                         <label for="password-login">Password <a href="/sessions/forgot_password">(forgot password)</a></label>
-                        <input type="password" ng-model="user.password" class="form-control" id="password-login" style="border-radius:0px" placeholder="Password">
+                        <input type="password" name="password" ng-model="user.password" class="form-control" id="password-login" style="border-radius:0px" placeholder="Password" required>
+                        <p class="help-block" ng-if="loginForm.password.$error.required">Password required</p>
                     </div>
-                    <button type="submit" class="btn btn-sm btn-default" ng-click="login(user)">Sign in</button>
+                    <button type="submit" class="btn btn-sm btn-default" ng-disabled="loginForm.$invalid" ng-click="login(user)">Sign in</button>
                 </form>
             </div>
         </div>
@@ -26,20 +28,23 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>Register </strong></h3></div>
             <div class="panel-body">
-                <form role="form">
-                    <div class="form-group">
+                <form name="registerForm" role="form" novalidate>
+                    <div class="form-group" show-errors>
                         <label for="username-register">Email</label>
-                        <input type="email" name="username" id="username-register" class="form-control" style="border-radius:0px" placeholder="Enter email">
+                        <input type="email" name="email" ng-model="registerUser.username" id="username-register" class="form-control" style="border-radius:0px" placeholder="Enter email" required>
+                        <p ng-show="registerForm.email.$invalid" class="help-block">Enter a valid email.</p>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" show-errors>
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" style="border-radius:0px" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" name="password" data-ng-model="registerUser.password" class="form-control" style="border-radius:0px" id="exampleInputPassword1" placeholder="Password" required>
+                        <p ng-show="registerForm.password.$error.required" class="help-block">Password required.</p>
                     </div>
                     <div class="form-group">
                         <label for="confirm-password">Confirm password</label>
-                        <input type="password" class="form-control" style="border-radius:0px" id="confirm-password" placeholder="Password">
+                        <input type="password" class="form-control" data-ng-model="registerUser.confirmPassword" style="border-radius:0px" id="confirm-password" placeholder="Confirm password">
+                        <p ng-show="registerForm.password.$error.match" class="help-block" ng-show="IsMatch()">Passwords dont match.</p>
                     </div>
-                    <button type="submit" class="btn btn-sm btn-default">Register</button>
+                    <button type="submit" class="btn btn-sm btn-default" ng-disabled="registerForm.$invalid" data-ng-click="register(registerUser)">Register</button>
                 </form>
             </div>
         </div>
