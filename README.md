@@ -8,7 +8,7 @@ A seed app node.js restful server with continuous integration and code quality m
 Architecture
 ==============
 
-![Architecture](https://raw.githubusercontent.com/guillermocorrea/nodejs-restful/master/doc/img/nodesj-restful.gif)
+![Architecture](https://raw.githubusercontent.com/guillermocorrea/nodejs-restful/master/doc/img/nodesj-restful.gif) 
 
 Example token request:
 ```
