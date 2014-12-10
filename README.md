@@ -5,6 +5,13 @@ nodejs-restful
 
 A seed app node.js restful server with continuous integration and code quality metrics throug https://travis-ci.org/, https://coveralls.io/ and https://codeclimate.com.
 
+Install
+==============
+```
+npm install
+bower install
+```
+
 Architecture
 ==============
 
